@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chuks Kitchen | The Heart of Nigerian Cooking</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=League+Script&display=swap"
+    />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="css/homepage.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="logo-font orange-text">Chuks Kitchen</div>
+
+        <input type="checkbox" id="menu-toggle" />
+        <label for="menu-toggle" class="hamburger">
+          <i class="ph ph-list"></i>
+        </label>
+
+        <ul class="nav-links">
+          <li><a href="hompage.html" class="active">Home</a></li>
+          <li><a href="menu.html">Explore</a></li>
+          <li><a href="cart.html">My Orders</a></li>
+          <li><a href="payment.html">Account</a></li>
+          <li class="mobile-only">
+            <button class="btn-login" id="loginBtnMobile">Login</button>
+          </li>
+        </ul>
+
+        <div id="nav-user-section" class="desktop-only">
+          <button class="btn-login" id="loginBtn">Login</button>
+        </div>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="hero-overlay">
+        <div class="hero-content">
+          <h1>The Heart of Nigerian Home Cooking</h1>
+          <p>Handcrafted with passion, delivered with care.</p>
+          <button class="btn-hero">Discover what's new</button>
+        </div>
+      </div>
+      <div class="search-bar-container">
+        <div class="search-box">
+          <i class="ph ph-magnifying-glass"></i>
+          <input type="text" placeholder="What are you craving for today?" />
+        </div>
+      </div>
+    </header>
+
+    <section class="section-padding">
+      <h2 class="section-title">Popular Categories</h2>
+      <div class="category-grid">
+        <div class="category-card">
+          <img src="image/jollof.png" alt="Jollof" />
+          <h3>Jollof Delights</h3>
+        </div>
+        <div class="category-card">
+          <img src="image/semo.png" alt="Swallow" />
+          <h3>Swallow & Soups</h3>
+        </div>
+        <div class="category-card">
+          <img src="./image/suya.png" alt="Grills" />
+          <h3>Grills & BBQ</h3>
+        </div>
+        <div class="category-card">
+          <img src="/image/puff-puff.png" alt="Treats" />
+          <h3>Sweet Treats</h3>
+        </div>
+        <div class="category-card">
+          <img src="/image/semo.png" alt="Jollof" />
+          <h3>Jollof Delights</h3>
+        </div>
+        <div class="category-card">
+          <img src="/image/suya.png" alt="Jollof" />
+          <h3>Jollof Delights</h3>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding bg-light">
+      <h2 class="section-title">Chef's Specials</h2>
+      <div class="specials-grid">
+        <div class="food-card">
+          <img src="/image/tilapia.png" alt="Fish" />
+          <div class="food-info">
+            <h3>Spicy Tilapia Pepper Soup</h3>
+            <p>
+              A comforting and spicy soup with tender tilapia fish, a true
+              Nigerian delicacy.
+            </p>
+            <div class="price-row">
+              <span class="price">₦2,500</span>
+              <button class="btn-add">Add to cart</button>
+            </div>
+          </div>
+        </div>
+        <div class="food-card">
+          <img src="/image/jollof.png" alt="Jollof" />
+          <div class="food-info">
+            <h3>Jollof Rice & Fried Chicken</h3>
+            <p>
+              Our signature Jollof rice, cooked to perfection, served with
+              succulent fried chicken.
+            </p>
+            <div class="price-row">
+              <span class="price">₦3,500</span>
+              <button class="btn-add">Add to cart</button>
+            </div>
+          </div>
+        </div>
+        <div class="food-card">
+          <img src="/image/jollof.png" alt="Jollof" />
+          <div class="food-info">
+            <h3>Jollof Rice & Fried Chicken</h3>
+            <p>
+              Our signature Jollof rice, cooked to perfection, served with
+              succulent fried chicken.
+            </p>
+            <div class="price-row">
+              <span class="price">₦3,500</span>
+              <button class="btn-add">Add to cart</button>
+            </div>
+          </div>
+        </div>
+        <div class="food-card">
+          <img src="/image/jollof.png" alt="Jollof" />
+          <div class="food-info">
+            <h3>Jollof Rice & Fried Chicken</h3>
+            <p>
+              Our signature Jollof rice, cooked to perfection, served with
+              succulent fried chicken.
+            </p>
+            <div class="price-row">
+              <span class="price">₦3,500</span>
+              <button class="btn-add">Add to cart</button>
+            </div>
+          </div>
+        </div>
+        <div class="food-card">
+          <img src="/image/jollof-chicken.png" alt="Jollof" />
+          <div class="food-info">
+            <h3>Jollof Rice & Fried Chicken</h3>
+            <p>
+              Our signature Jollof rice, cooked to perfection, served with
+              succulent fried chicken.
+            </p>
+            <div class="price-row">
+              <span class="price">₦3,500</span>
+              <button class="btn-add">Add to cart</button>
+            </div>
+          </div>
+        </div>
+        <div class="food-card">
+          <img src="/image/egusi.png" alt="Egusi" />
+          <div class="food-info">
+            <h3>Egusi Soup & Pounded Yam</h3>
+            <p>
+              Rich and savory Egusi soup with assorted meats, paired with
+              freshly pounded yam.
+            </p>
+            <div class="price-row">
+              <span class="price">₦3,500</span>
+              <button class="btn-add">Add to cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="menu-promo">
+      <div class="promo-content">
+        <h2>Introducing Our New Menu Additions!</h2>
+        <p>
+          Explore exciting new dishes, crafted with the freshest ingredients and
+          authentic Nigerian flavors. Limited time offer!
+        </p>
+        <button class="btn-hero">Discover what's new</button>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h2 class="logo-font light-orange">Chuks Kitchen</h2>
+          <p class="footer-note">
+            Bringing the authentic flavors of Nigerian home cooking to your
+            table, with passion and care.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul>
+            <li>Home</li>
+            <li>Explore</li>
+            <li>My Order</li>
+            <li>Account</li>
+            <li>Contact</li>
+          </ul>
+        </div>
+        <div class="footer-col-contact">
+          <h3>Contact Us</h3>
+          <p>+234 801 234 5678</p>
+          <p>hello@chukskitchen.com</p>
+          <p>123 Taste Blvd, Lagos, Nigeria</p>
+        </div>
+        <div class="footer-col">
+          <h3>Social Media</h3>
+          <ul class="social-links">
+            <li>Facebook</li>
+            <li>Twitter</li>
+            <li>Linkedin</li>
+            <li>Instagram</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2020 Lift Media. All rights reserved.</p>
+        <button id="scrollTop" class="scroll-top">
+          <i class="ph ph-arrow-up"></i>
+        </button>
+      </div>
+    </footer>
+
+    <script src="js/homepage.js"></script>
+  </body>
+</html>

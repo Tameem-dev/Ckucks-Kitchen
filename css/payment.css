@@ -1,0 +1,561 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-orange: #ff7d29;
+    --dark-orange: #e86b1f;
+    --dark-brown: #4a3427;
+    --light-orange: #fff0e6;
+    --text-dark: #1f2937;
+    --text-gray: #6b7280;
+    --border-color: #e5e7eb;
+    --background-light: #f9fafb;
+    --white: #ffffff;
+    --success-green: #10b981;
+    --error-red: #ef4444;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-dark);
+    background: var(--background-light);
+    line-height: 1.5;
+}
+
+/* Navigation */
+.navbar {
+    background: var(--white);
+    padding: 1rem 5%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'League Script', cursive;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-orange);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-gray);
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--primary-orange);
+}
+
+#menu-toggle, .hamburger {
+    display: none;
+}
+
+.btn-login {
+    background: var(--primary-orange);
+    color: white;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-login:hover {
+    background: var(--dark-orange);
+}
+
+.mobile-login {
+    display: none;
+}
+
+/* Main Container */
+.container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+
+/* Back Link */
+.back-link {
+    margin-bottom: 1.5rem;
+}
+
+.back-link a {
+    color: var(--text-gray);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    transition: color 0.3s;
+}
+
+.back-link a:hover {
+    color: var(--primary-orange);
+}
+
+.page-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--text-dark);
+}
+
+/* Payment Card */
+.payment-card {
+    background: var(--white);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Section Styles */
+.section-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 1.25rem;
+}
+
+/* Payment Options */
+.payment-section {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.payment-options {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.payment-option {
+    flex: 1;
+    min-width: 120px;
+    cursor: pointer;
+}
+
+.payment-option input[type="radio"] {
+    display: none;
+}
+
+.option-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: var(--background-light);
+    border: 1px solid var(--border-color);
+    border-radius: 0.75rem;
+    font-weight: 500;
+    color: var(--text-gray);
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.option-content i {
+    font-size: 1.2rem;
+}
+
+.payment-option input[type="radio"]:checked + .option-content {
+    background: var(--primary-orange);
+    color: white;
+    border-color: var(--primary-orange);
+}
+
+/* Card Details Section */
+.card-details-section {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.card-number-group {
+    margin-bottom: 1rem;
+}
+
+.card-number-group label,
+.expiry-group label,
+.cvv-group label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.card-number-group input,
+.expiry-group input,
+.cvv-group input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.75rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.card-number-group input:focus,
+.expiry-group input:focus,
+.cvv-group input:focus {
+    outline: none;
+    border-color: var(--primary-orange);
+}
+
+.card-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.expiry-group {
+    flex: 1;
+}
+
+.cvv-group {
+    flex: 1;
+}
+
+.save-card-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.save-card-checkbox input[type="checkbox"] {
+    width: 1.1rem;
+    height: 1.1rem;
+    accent-color: var(--primary-orange);
+    cursor: pointer;
+}
+
+.save-card-checkbox span {
+    color: var(--text-gray);
+    font-size: 0.95rem;
+}
+
+/* Bank Details Section */
+.bank-details-section {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.bank-info p {
+    color: var(--text-gray);
+    margin-bottom: 1rem;
+}
+
+.bank-select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.75rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    background: var(--white);
+    cursor: pointer;
+}
+
+.bank-select:focus {
+    outline: none;
+    border-color: var(--primary-orange);
+}
+
+/* Transfer Details Section */
+.transfer-details-section {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.transfer-info p {
+    color: var(--text-gray);
+    margin-bottom: 1rem;
+}
+
+.account-details {
+    background: var(--background-light);
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.account-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.account-row:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.account-row span {
+    color: var(--text-gray);
+}
+
+.account-row strong {
+    color: var(--text-dark);
+}
+
+.transfer-note {
+    font-size: 0.9rem;
+    color: var(--primary-orange);
+    font-style: italic;
+}
+
+/* Pay Amount Section */
+.pay-amount-section {
+    margin-top: 1.5rem;
+}
+
+.pay-btn {
+    width: 100%;
+    background: var(--primary-orange);
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    font-weight: 700;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s;
+    margin-bottom: 1.5rem;
+}
+
+.pay-btn:hover {
+    background: var(--dark-orange);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 125, 41, 0.3);
+}
+
+.pay-btn span {
+    font-size: 1.3rem;
+}
+
+.privacy-note {
+    color: var(--text-gray);
+    font-size: 0.85rem;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.privacy-note a {
+    color: var(--primary-orange);
+    text-decoration: none;
+}
+
+.privacy-note a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+    .footer {
+        background: var(--dark-brown);
+        color: #d1d5db;
+        padding: 60px 5% 30px;
+        margin-top: 60px;
+    }
+
+    .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .logo-fonts {
+        font-family: 'League Script', cursive;
+        color: var(--primary-orange);
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
+    .footer-note {
+        line-height: 36px;
+        font-weight: 400;
+        font-size: 24px;
+        margin: 0;
+    }
+
+    .footer-col h3 {
+        color: white;
+        margin-bottom: 20px;
+    }
+
+    .footer-col-contact {
+        line-height: 36px;
+    }
+
+    .footer-col-contact h3 {
+        color: white;
+        margin-bottom: 10px;
+    }
+
+    .footer-col-contact p {
+        margin-bottom: 10px;
+        font-size: 14px;
+    }
+
+    .footer-col ul {
+        list-style: none;
+    }
+
+    .footer-col ul li {
+        margin-bottom: 10px;
+    }
+
+    .footer-col ul li a {
+        color: #d1d5db;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+
+    .footer-col ul li a:hover {
+        color: var(--primary-orange);
+    }
+
+    .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        margin-top: 40px;
+        padding-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .scroll-top {
+        bottom: 30px;
+        right: 30px;
+        background: var(--primary-orange);
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: none;
+        display: flex;
+        cursor: pointer;
+        z-index: 999;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .scroll-top:hover {
+        background: #ff9436;
+    }
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--white);
+        flex-direction: column;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 99;
+    }
+
+    #menu-toggle:checked ~ .nav-links {
+        max-height: 400px;
+        padding: 1rem 0;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 0.75rem;
+    }
+
+    .desktop-only {
+        display: none;
+    }
+
+    .mobile-login {
+        display: block;
+        padding: 0.75rem;
+    }
+
+    .payment-options {
+        flex-direction: column;
+    }
+
+    .card-row {
+        flex-direction: column;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .payment-card {
+        padding: 1.5rem;
+    }
+
+    .page-title {
+        font-size: 1.75rem;
+    }
+
+    .account-row {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+}

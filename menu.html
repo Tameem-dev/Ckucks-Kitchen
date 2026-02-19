@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu | Chuks Kitchen</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=League+Script&display=swap" />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="css/menu.css" />
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-font orange-text">Chuks Kitchen</div>
+
+            <input type="checkbox" id="menu-toggle" />
+            <label for="menu-toggle" class="hamburger">
+                <i class="ph ph-list"></i>
+            </label>
+
+            <ul class="nav-links">
+                <li><a href="hompage.html">Home</a></li>
+                <li><a href="menu.html" class="active">Explore</a></li>
+                <li><a href="cart.html">My Orders</a></li>
+                <li><a href="payment.html">Account</a></li>
+                <li class="mobile-login">
+                    <button class="btn-login" id="loginBtnMobile">Login</button>
+                </li>
+            </ul>
+
+            <div class="desktop-only">
+                <button class="btn-login" id="loginBtn">Login</button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="menu-hero">
+        <div class="menu-hero-content">
+            <h1>Chuks Kitchen</h1>
+            <p>Chuks Kitchen Nigerian Home Cooking 4.8 (1.2k)</p>
+        </div>
+    </header>
+
+    <main class="menu-layout">
+        <aside class="menu-sidebar">
+            <div class="category-dropdown" id="categoryBox">
+                <button class="dropdown-header" id="dropdownTrigger">
+                    <span>Menu Categories</span>
+                    <i class="ph ph-caret-down"></i>
+                </button>
+                <ul class="category-list">
+                    <li class="active">Popular</li>
+                    <li>Jollof Rice & Entrees</li>
+                    <li>Swallow & Soups</li>
+                    <li>Grills & Sides</li>
+                    <li>Beverages</li>
+                    <li>Desserts</li>
+                </ul>
+            </div>
+        </aside>
+        
+        <!-- POPULAR SECTION (Visible by default) -->
+        <section class="menu-content" id="popular-section">
+            <h2 class="section-label">Popular</h2>
+            <div class="food-grid">
+                <!-- Jollof Rice Card -->
+                <div class="food-card" data-item-id="jollof-chicken" data-item-name="Jollof Rice & Fried Chicken" data-item-price="2800" data-item-image="image/jollof.png" data-item-description="Our signature Jollof rice, served with crispy fried chicken and plantain.">
+                    <img src="image/jollof.png" alt="Jollof Rice" />
+                    <div class="food-info">
+                        <h3>Jollof Rice & Fried Chicken</h3>
+                        <p>Our signature Jollof rice, served with crispy fried chicken and plantain.</p>
+                        <div class="price-row">
+                            <span class="price">₦2,800</span>
+                            <button class="btn-add" onclick="event.stopPropagation(); quickAddToCart(this)">
+                                <i class="ph ph-plus-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Eba & Egusi Card -->
+                <div class="food-card" data-item-id="eba-egusi" data-item-name="Eba & Egusi Soup (Goat Meat)" data-item-price="3500" data-item-image="image/image 8.png" data-item-description="Hearty Egusi soup with tender goat meat, served with soft Eba.">
+                    <img src="image/image 8.png" alt="Eba and Egusi" />
+                    <div class="food-info">
+                        <h3>Eba & Egusi Soup (Goat Meat)</h3>
+                        <p>Hearty Egusi soup with tender goat meat, served with soft Eba.</p>
+                        <div class="price-row">
+                            <span class="price">₦3,500</span>
+                            <button class="btn-add" onclick="event.stopPropagation(); quickAddToCart(this)">
+                                <i class="ph ph-plus-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pounded Yam Card -->
+                <div class="food-card" data-item-id="pounded-yam" data-item-name="Pounded Yam & Edikaikong" data-item-price="3500" data-item-image="image/image 7.png" data-item-description="Traditional pounded yam with rich, leafy Edikaikong soup.">
+                    <img src="image/image 7.png" alt="Pounded Yam" />
+                    <div class="food-info">
+                        <h3>Pounded Yam & Edikaikong</h3>
+                        <p>Traditional pounded yam with rich, leafy Edikaikong soup.</p>
+                        <div class="price-row">
+                            <span class="price">₦3,500</span>
+                            <button class="btn-add" onclick="event.stopPropagation(); quickAddToCart(this)">
+                                <i class="ph ph-plus-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Peppered Snail Card -->
+                <div class="food-card" data-item-id="peppered-snail" data-item-name="Peppered Snail" data-item-price="3500" data-item-image="image/image 5.png" data-item-description="Spicy and savory peppered snail, perfect as a starter.">
+                    <img src="image/image 5.png" alt="Peppered Snail" />
+                    <div class="food-info">
+                        <h3>Peppered Snail</h3>
+                        <p>Spicy and savory peppered snail, perfect as a starter.</p>
+                        <div class="price-row">
+                            <span class="price">₦3,500</span>
+                            <button class="btn-add" onclick="event.stopPropagation(); quickAddToCart(this)">
+                                <i class="ph ph-plus-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grilled Tilapia Card -->
+                <div class="food-card" data-item-id="grilled-tilapia" data-item-name="Grilled Tilapia Fish" data-item-price="3500" data-item-image="image/Rectangle 13.png" data-item-description="Whole grilled tilapia seasoned with our special spices.">
+                    <img src="image/Rectangle 13.png" alt="Grilled Tilapia" />
+                    <div class="food-info">
+                        <h3>Grilled Tilapia Fish</h3>
+                        <p>Whole grilled tilapia seasoned with our special spices.</p>
+                        <div class="price-row">
+                            <span class="price">₦3,500</span>
+                            <button class="btn-add" onclick="event.stopPropagation(); quickAddToCart(this)">
+                                <i class="ph ph-plus-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jollof Rice Duplicate Card -->
+                <div class="food-card" data-item-id="jollof-chicken-2" data-item-name="Jollof Rice & Fried Chicken" data-item-price="2800" data-item-image="image/jollof.png" data-item-description="Our signature Jollof rice, served with crispy fried chicken and plantain.">
+                    <img src="image/jollof.png" alt="Jollof Rice" />
+                    <div class="food-info">
+                        <h3>Jollof Rice & Fried Chicken</h3>
+                        <p>Our signature Jollof rice, served with crispy fried chicken and plantain.</p>
+                        <div class="price-row">
+                            <span class="price">₦2,800</span>
+                            <button class="btn-add" onclick="event.stopPropagation(); quickAddToCart(this)">
+                                <i class="ph ph-plus-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- JOLLOF RICE & ENTREES SECTION (Visible by default) -->
+        <section class="menu-content" id="jollof-section">
+            <h2 class="section-label">Jollof Rice & Entrees</h2>
+            <div class="food-grid">
+                <!-- Jollof with Smoked Fish Card -->
+                <div class="food-card" data-item-id="jollof-fish" data-item-name="Jollof Rice & Smoked Fish" data-item-price="3500" data-item-image="image/image 3.png" data-item-description="Flavorful jollof rice served with perfectly smoked fish.">
+                    <img src="image/image 3.png" alt="Jollof with Fish" />
+                    <div class="food-info">
+                        <h3>Jollof Rice & Smoked Fish</h3>
+                        <p>Flavorful jollof rice served with perfectly smoked fish.</p>
+                        <div class="price-row">
+                            <span class="price">₦3,500</span>
+                            <button class="btn-add" onclick="event.stopPropagation(); quickAddToCart(this)">
+                                <i class="ph ph-plus-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Party Jollof Veg Card -->
+                <div class="food-card" data-item-id="party-jollof" data-item-name="Party Jollof Rice (Veg)" data-item-price="3500" data-item-image="image/jollof.png" data-item-description="Vegetarian party jollof, full of rich flavors.">
+                    <img src="image/jollof.png" alt="Party Jollof" />
+                    <div class="food-info">
+                        <h3>Party Jollof Rice (Veg)</h3>
+                        <p>Vegetarian party jollof, full of rich flavors.</p>
+                        <div class="price-row">
+                            <span class="price">₦3,500</span>
+                            <button class="btn-add" onclick="event.stopPropagation(); quickAddToCart(this)">
+                                <i class="ph ph-plus-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coconut Rice Card -->
+                <div class="food-card" data-item-id="coconut-rice" data-item-name="Coconut Rice with Chicken" data-item-price="3200" data-item-image="image/jollof.png" data-item-description="Fragrant coconut rice served with grilled chicken.">
+                    <img src="image/jollof.png" alt="Coconut Rice" />
+                    <div class="food-info">
+                        <h3>Coconut Rice with Chicken</h3>
+                        <p>Fragrant coconut rice served with grilled chicken.</p>
+                        <div class="price-row">
+                            <span class="price">₦3,200</span>
+                            <button class="btn-add" onclick="event.stopPropagation(); quickAddToCart(this)">
+                                <i class="ph ph-plus-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SWALLOW & SOUPS SECTION (Visible by default) -->
+        <section class="menu-content" id="swallow-section">
+            <h2 class="section-label">Swallow & Soups</h2>
+            <div class="food-grid">
+                <!-- Amala with Gbegiri Card -->
+                <div class="food-card" data-item-id="amala" data-item-name="Amala with Gbegiri & Ewedu" data-item-price="3500" data-item-image="image/image 1.png" data-item-description="Classic Amala served with Gbegiri (beans) and Ewedu (jute leaf) soup.">
+                    <img src="image/image 1.png" alt="Amala" />
+                    <div class="food-info">
+                        <h3>Amala with Gbegiri & Ewedu</h3>
+                        <p>Classic Amala served with Gbegiri (beans) and Ewedu (jute leaf) soup.</p>
+                        <div class="price-row">
+                            <span class="price">₦3,500</span>
+                            <button class="btn-add" onclick="event.stopPropagation(); quickAddToCart(this)">
+                                <i class="ph ph-plus-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fufu & Okro Soup Card -->
+                <div class="food-card" data-item-id="fufu" data-item-name="Fufu & Okro Soup (Fish)" data-item-price="3500" data-item-image="image/image 2.png" data-item-description="Light Fufu served with fresh okra soup and tilapia fish.">
+                    <img src="image/image 2.png" alt="Fufu" />
+                    <div class="food-info">
+                        <h3>Fufu & Okro Soup (Fish)</h3>
+                        <p>Light Fufu served with fresh okra soup and tilapia fish.</p>
+                        <div class="price-row">
+                            <span class="price">₦3,500</span>
+                            <button class="btn-add" onclick="event.stopPropagation(); quickAddToCart(this)">
+                                <i class="ph ph-plus-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Eba & Egusi (Beef) Card -->
+                <div class="food-card" data-item-id="eba-egusi-beef" data-item-name="Eba & Egusi Soup (Beef)" data-item-price="3500" data-item-image="image/image 8.png" data-item-description="Rich Egusi soup with beef, served with soft Eba.">
+                    <img src="image/image 8.png" alt="Eba and Egusi Beef" />
+                    <div class="food-info">
+                        <h3>Eba & Egusi Soup (Beef)</h3>
+                        <p>Rich Egusi soup with beef, served with soft Eba.</p>
+                        <div class="price-row">
+                            <span class="price">₦3,500</span>
+                            <button class="btn-add" onclick="event.stopPropagation(); quickAddToCart(this)">
+                                <i class="ph ph-plus-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GRILLS & SIDES SECTION (Hidden by default) -->
+        <section class="menu-content hidden-section" id="grills-section" style="display: none;">
+            <h2 class="section-label">Grills & Sides</h2>
+            <div class="food-grid">
+                <!-- Grilled Chicken Card -->
+                <div class="food-card" data-item-id="grilled-chicken" data-item-name="Grilled Chicken (Full)" data-item-price="4500" data-item-image="image/Rectangle 13.png" data-item-description="Whole grilled chicken seasoned with special spices.">
+                    <img src="image/Rectangle 13.png" alt="Grilled Chicken" />
+                    <div class="food-info">
+                        <h3>Grilled Chicken (Full)</h3>
+                        <p>Whole grilled chicken seasoned with special spices.</p>
+                        <div class="price-row">
+                            <span class="price">₦4,500</span>
+                            <button class="btn-add" onclick="event.stopPropagation(); quickAddToCart(this)">
+                                <i class="ph ph-plus-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grilled Fish Card -->
+                <div class="food-card" data-item-id="grilled-fish" data-item-name="Grilled Tilapia Fish" data-item-price="3500" data-item-image="image/Rectangle 13.png" data-item-description="Whole grilled tilapia seasoned with our special spices.">
+                    <img src="image/Rectangle 13.png" alt="Grilled Tilapia" />
+                    <div class="food-info">
+                        <h3>Grilled Tilapia Fish</h3>
+                        <p>Whole grilled tilapia seasoned with our special spices.</p>
+                        <div class="price-row">
+                            <span class="price">₦3,500</span>
+                            <button class="btn-add" onclick="event.stopPropagation(); quickAddToCart(this)">
+                                <i class="ph ph-plus-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fried Plantain Card -->
+                <div class="food-card" data-item-id="fried-plantain" data-item-name="Fried Plantain (Dodo)" data-item-price="1500" data-item-image="image/image 5.png" data-item-description="Sweet ripe plantain fried to perfection.">
+                    <img src="image/image 5.png" alt="Fried Plantain" />
+                    <div class="food-info">
+                        <h3>Fried Plantain (Dodo)</h3>
+                        <p>Sweet ripe plantain fried to perfection.</p>
+                        <div class="price-row">
+                            <span class="price">₦1,500</span>
+                            <button class="btn-add" onclick="event.stopPropagation(); quickAddToCart(this)">
+                                <i class="ph ph-plus-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BEVERAGES SECTION (Hidden by default) -->
+        <section class="menu-content hidden-section" id="beverages-section" style="display: none;">
+            <h2 class="section-label">Beverages</h2>
+            <div class="food-grid">
+                <!-- Zobo Drink Card -->
+                <div class="food-card" data-item-id="zobo" data-item-name="Zobo Drink" data-item-price="500" data-item-image="image/image 5.png" data-item-description="Refreshing hibiscus drink with ginger and cloves.">
+                    <img src="image/image 5.png" alt="Zobo Drink" />
+                    <div class="food-info">
+                        <h3>Zobo Drink</h3>
+                        <p>Refreshing hibiscus drink with ginger and cloves.</p>
+                        <div class="price-row">
+                            <span class="price">₦500</span>
+                            <button class="btn-add" onclick="event.stopPropagation(); quickAddToCart(this)">
+                                <i class="ph ph-plus-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chapman Card -->
+                <div class="food-card" data-item-id="chapman" data-item-name="Chapman" data-item-price="800" data-item-image="image/image 5.png" data-item-description="Nigerian signature mocktail.">
+                    <img src="image/image 5.png" alt="Chapman" />
+                    <div class="food-info">
+                        <h3>Chapman</h3>
+                        <p>Nigerian signature mocktail.</p>
+                        <div class="price-row">
+                            <span class="price">₦800</span>
+                            <button class="btn-add" onclick="event.stopPropagation(); quickAddToCart(this)">
+                                <i class="ph ph-plus-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Palm Wine Card -->
+                <div class="food-card" data-item-id="palm-wine" data-item-name="Fresh Palm Wine" data-item-price="700" data-item-image="image/image 5.png" data-item-description="Fresh tapped palm wine.">
+                    <img src="image/image 5.png" alt="Palm Wine" />
+                    <div class="food-info">
+                        <h3>Fresh Palm Wine</h3>
+                        <p>Fresh tapped palm wine.</p>
+                        <div class="price-row">
+                            <span class="price">₦700</span>
+                            <button class="btn-add" onclick="event.stopPropagation(); quickAddToCart(this)">
+                                <i class="ph ph-plus-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DESSERTS SECTION (Hidden by default) -->
+        <section class="menu-content hidden-section" id="desserts-section" style="display: none;">
+            <h2 class="section-label">Desserts</h2>
+            <div class="food-grid">
+                <!-- Puff Puff Card -->
+                <div class="food-card" data-item-id="puff-puff" data-item-name="Puff Puff (6 pieces)" data-item-price="1000" data-item-image="image/image 5.png" data-item-description="Soft, fluffy Nigerian doughnuts.">
+                    <img src="image/image 5.png" alt="Puff Puff" />
+                    <div class="food-info">
+                        <h3>Puff Puff (6 pieces)</h3>
+                        <p>Soft, fluffy Nigerian doughnuts.</p>
+                        <div class="price-row">
+                            <span class="price">₦1,000</span>
+                            <button class="btn-add" onclick="event.stopPropagation(); quickAddToCart(this)">
+                                <i class="ph ph-plus-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chin Chin Card -->
+                <div class="food-card" data-item-id="chin-chin" data-item-name="Chin Chin" data-item-price="800" data-item-image="image/image 5.png" data-item-description="Crunchy fried dough snack.">
+                    <img src="image/image 5.png" alt="Chin Chin" />
+                    <div class="food-info">
+                        <h3>Chin Chin</h3>
+                        <p>Crunchy fried dough snack.</p>
+                        <div class="price-row">
+                            <span class="price">₦800</span>
+                            <button class="btn-add" onclick="event.stopPropagation(); quickAddToCart(this)">
+                                <i class="ph ph-plus-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coconut Candy Card -->
+                <div class="food-card" data-item-id="coconut-candy" data-item-name="Coconut Candy" data-item-price="600" data-item-image="image/image 5.png" data-item-description="Sweet, chewy coconut candy.">
+                    <img src="image/image 5.png" alt="Coconut Candy" />
+                    <div class="food-info">
+                        <h3>Coconut Candy</h3>
+                        <p>Sweet, chewy coconut candy.</p>
+                        <div class="price-row">
+                            <span class="price">₦600</span>
+                            <button class="btn-add" onclick="event.stopPropagation(); quickAddToCart(this)">
+                                <i class="ph ph-plus-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h2 class="logo-fonts light-orange">Chuks Kitchen</h2>
+                <p class="footer-note">Bringing the authentic flavors of Nigerian home cooking to your table.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="homepage.html">Home</a></li>
+                    <li><a href="menu.html">Explore</a></li>
+                    <li><a href="cart.html">My Order</a></li>
+                    <li><a href="account.html">Account</a></li>
+                </ul>
+            </div>
+            <div class="footer-col-contact">
+                <h3>Contact Us</h3>
+                <p>+234 801 234 5678</p>
+                <p>hello@chukskitchen.com</p>
+                <p>123 Taste Blvd, Lagos, Nigeria</p>
+            </div>
+            <div class="footer-col">
+                <h3>Social Media</h3>
+                <ul class="social-links">
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Linkedin</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2020 Lift Media. All rights reserved.</p>
+            <button id="scrollTop" class="scroll-top">
+                <i class="ph ph-arrow-up"></i>
+            </button>
+        </div>
+    </footer>
+
+    <script src="js/menu.js"></script>
+</body>
+</html>

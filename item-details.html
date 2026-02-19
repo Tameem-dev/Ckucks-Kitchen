@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jollof Rice with Fried Chicken | Chuk's Kitchen</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="css/item-details.css" />
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-font orange-text">Chuks Kitchen</div>
+
+            <input type="checkbox" id="menu-toggle" />
+            <label for="menu-toggle" class="hamburger">
+                <i class="ph ph-list"></i>
+            </label>
+
+            <ul class="nav-links">
+                <li><a href="hompage.html">Home</a></li>
+                <li><a href="menu.html" class="active">Explore</a></li>
+                <li><a href="cart.html">My Orders</a></li>
+                <li><a href="payment.html">Account</a></li>
+                <li class="mobile-login">
+                    <button class="btn-login" id="loginBtnMobile">Login</button>
+                </li>
+            </ul>
+
+            <div class="desktop-only">
+                <button class="btn-login" id="loginBtn">Login</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="back-link">
+            <a href="menu.html">
+                <i class="ph ph-arrow-left"></i> Back to Menu
+            </a>
+        </div>
+
+        <div class="item-card">
+            <div class="item-image">
+                <img src="image/jollof.png" alt="Jollof Rice with Fried Chicken">
+            </div>
+
+            <div class="item-details">
+                <h1 class="item-title">Jollof Rice with Fried Chicken</h1>
+                <div class="item-price">₦2,800</div>
+                
+                <p class="item-description">
+                    Our signature Jollof rice, cooked to perfection with aromatic spices, 
+                    served with juicy, golden-fried chicken.
+                </p>
+
+                <div class="item-tags">
+                    <span class="tag"><i class="ph ph-flame"></i> Mildly spicy</span>
+                    <span class="tag"><i class="ph ph-leaf"></i> Vegetarian option available</span>
+                </div>
+
+                <a href="#" class="allergies-link"><i class="ph ph-info"></i> View Allergies</a>
+
+                <!-- Choose Your Protein Section -->
+                <div class="options-section">
+                    <h3 class="section-title"><i class="ph ph-fork-knife"></i> Choose Your Protein</h3>
+                    
+                    <div class="option-item">
+                        <div class="option-left">
+                            <input type="radio" name="protein" id="chicken" checked>
+                            <label for="chicken">Fried Chicken <span class="default-badge">Default</span></label>
+                        </div>
+                        <span class="option-price">+₦500</span>
+                    </div>
+
+                    <div class="option-item">
+                        <div class="option-left">
+                            <input type="radio" name="protein" id="fish">
+                            <label for="fish">Grilled Fish</label>
+                        </div>
+                        <span class="option-price">+₦700</span>
+                    </div>
+
+                    <div class="option-item">
+                        <div class="option-left">
+                            <input type="radio" name="protein" id="beef">
+                            <label for="beef">Beef</label>
+                        </div>
+                        <span class="option-price">+₦700</span>
+                    </div>
+                </div>
+
+                <!-- Extra Sides Section -->
+                <div class="options-section">
+                    <h3 class="section-title"><i class="ph ph-cooking-pot"></i> Extra Sides (Optional)</h3>
+                    
+                    <div class="option-item">
+                        <div class="option-left">
+                            <input type="checkbox" id="plantain">
+                            <label for="plantain">Fried Plantain</label>
+                        </div>
+                        <span class="option-price">+₦700</span>
+                    </div>
+
+                    <div class="option-item">
+                        <div class="option-left">
+                            <input type="checkbox" id="coleslaw">
+                            <label for="coleslaw">Coleslaw</label>
+                        </div>
+                        <span class="option-price">+₦500</span>
+                    </div>
+
+                    <div class="option-item">
+                        <div class="option-left">
+                            <input type="checkbox" id="pepper-sauce">
+                            <label for="pepper-sauce">Extra Pepper Sauce</label>
+                        </div>
+                        <span class="option-price">+₦300</span>
+                    </div>
+                </div>
+
+                <!-- Special Instructions -->
+                <div class="special-instructions">
+                    <label for="instructions" class="section-title"><i class="ph ph-note-pencil"></i> Special Instructions</label>
+                    <textarea id="instructions" placeholder="E.g. no onion, food is too spicy, food is too hot"></textarea>
+                    <div class="example-text">Example: no onion, food is too spicy, food is too hot</div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button class="btn-add-to-cart" id="addToCartBtn">
+                        <i class="ph ph-shopping-cart"></i> Add to Cart - ₦2,800
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h2 class="logo-fonts light-orange">Chuks Kitchen</h2>
+                <p class="footer-note">Bringing the authentic flavors of Nigerian home cooking to your table.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="homepage.html">Home</a></li>
+                    <li><a href="menu.html">Explore</a></li>
+                    <li><a href="cart.html">My Order</a></li>
+                    <li><a href="account.html">Account</a></li>
+                </ul>
+            </div>
+            <div class="footer-col-contact">
+                <h3>Contact Us</h3>
+                <p>+234 801 234 5678</p>
+                <p>hello@chukskitchen.com</p>
+                <p>123 Taste Blvd, Lagos, Nigeria</p>
+            </div>
+            <div class="footer-col">
+                <h3>Social Media</h3>
+                <ul class="social-links">
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Linkedin</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2020 Lift Media. All rights reserved.</p>
+            <button id="scrollTop" class="scroll-top">
+                <i class="ph ph-arrow-up"></i>
+            </button>
+        </div>
+    </footer>
+
+    <script src="js/item-details.js"></script>
+</body>
+</html>

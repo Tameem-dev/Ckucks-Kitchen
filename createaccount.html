@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chuks Kitchen | Create Account</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=League+Script&display=swap"
+    />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <link rel="stylesheet" href="css/createaccount.css" />
+  </head>
+  <body>
+    <main class="main-container">
+      <section class="visual-side">
+        <div class="overlay">
+          <div class="overlay-content">
+            <h1 class="brand-logo white">Chuks Kitchen</h1>
+            <p>
+              Your journey to delicious, authentic Nigerian meals starts here.
+              Sign up or log in to order your favorites today!
+            </p>
+          </div>
+        </div>
+        <img
+          src="/image/Rectangle 1.png"
+          alt="Chuks Kitchen Background"
+          class="hero-img"
+        />
+      </section>
+
+      <section class="form-side">
+        <div class="form-wrapper">
+          <header class="form-header">
+            <div class="brand-logo orange">Chuks Kitchen</div>
+            <h2>Create Your Account</h2>
+          </header>
+
+          <form id="authForm">
+            <div class="input-group">
+              <label>Email</label>
+              <div class="field">
+                <i class="ph ph-envelope-simple"></i>
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="name@gmail.com"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label>Phone number</label>
+              <div class="field">
+                <i class="ph ph-phone"></i>
+                <input
+                  type="tel"
+                  id="phone"
+                  placeholder="8123340690"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label>Password</label>
+              <div class="field">
+                <i class="ph ph-lock"></i>
+                <input
+                  type="password"
+                  id="main-pass"
+                  placeholder="Password"
+                  class="password-input"
+                  required
+                />
+                <i class="ph ph-eye-slash toggle-pass"></i>
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label>Confirm Password</label>
+              <div class="field">
+                <i class="ph ph-lock"></i>
+                <input
+                  type="password"
+                  id="confirm-pass"
+                  placeholder="Confirm Password"
+                  class="password-input"
+                  required
+                />
+                <i class="ph ph-eye-slash toggle-pass"></i>
+              </div>
+            </div>
+
+            <div class="terms">
+              <input type="checkbox" id="agree" required />
+              <label for="agree"
+                >I agree to the <a href="#">Terms & Conditions</a> and
+                <a href="#">Privacy Policy</a></label
+              >
+            </div>
+
+            <button type="submit" class="btn-main">Continue</button>
+          </form>
+
+          <div class="divider"><span>Or continue with</span></div>
+
+          <div class="social-actions">
+            <button class="btn-social">
+              <img
+                src="https://www.gstatic.com/images/branding/product/1x/gsa_512dp.png"
+                alt="Google"
+              />
+              <span>Continue with Google</span>
+            </button>
+            <button class="btn-social">
+              <i class="ph ph-apple-logo"></i>
+              <span>Continue with Apple</span>
+            </button>
+          </div>
+
+          <p class="switch-auth">
+            Already have an account? <a href="login.html">Sign In</a>
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-grid">
+          <div class="footer-col about">
+            <h2 class="brand-logo light-orange">Chuks Kitchen</h2>
+            <p>
+              Bringing the authentic flavors of Nigerian home cooking to your
+              table, with passion and care.
+            </p>
+          </div>
+          <div class="footer-col">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Explore</a></li>
+              <li><a href="#">My Order</a></li>
+              <li><a href="#">Account</a></li>
+            </ul>
+          </div>
+          <div class="footer-col-contacts">
+            <h3>Contact Us</h3>
+            <p>+234 801 234 5678</p>
+            <p>hello@chukskitchen.com</p>
+            <p>123 Taste Blvd, Lagos, Nigeria</p>
+          </div>
+          <div class="footer-col">
+            <h3>Social Media</h3>
+            <ul class="social-links">
+              <li><a href="#">Facebook</a></li>
+              <li><a href="#">Twitter</a></li>
+              <li><a href="#">Linkedin</a></li>
+              <li><a href="#">Instagram</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2020 Lift Media. All rights reserved.</p>
+          <button class="scroll-top" id="scrollTopBtn">
+            <i class="ph ph-arrow-up"></i>
+          </button>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/createaccount.js"></script>
+  </body>
+</html>
