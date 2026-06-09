@@ -114,77 +114,153 @@ body {
     opacity: 0.9;
 }
 
-/* Main Layout */
+/* Main Layout - Dropdown on top */
 .menu-layout {
     max-width: 1400px;
     margin: 40px auto;
     padding: 0 5%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 }
 
+/* Dropdown Styles - Full width at top */
+./* Add these styles to your existing CSS - make dropdown more visible */
+
+/* Dropdown Styles - More visible and interactive */
 .menu-sidebar {
-    width: 280px;
-    margin-bottom: 30px;
+    width: 100%;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
 }
 
 .category-dropdown {
     background: white;
     border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid #e5e7eb;
 }
 
 .dropdown-header {
     width: 100%;
-    padding: 20px;
-    background: none;
+    padding: 16px 24px;
+    background: white;
     border: none;
     display: flex;
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
     font-weight: 700;
-    font-size: 1.1rem;
+    font-size: 1rem;
+    color: var(--dark-brown);
+    transition: all 0.3s ease;
+    gap: 10px;
+}
+
+.dropdown-header:hover {
+    background: #f9fafb;
+}
+
+.dropdown-header span {
+    flex: 1;
+    text-align: left;
+}
+
+.dropdown-header i {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.category-dropdown.active .dropdown-header i {
+    transform: rotate(180deg);
 }
 
 .category-list {
     list-style: none;
     max-height: 0;
     overflow: hidden;
-    transition: 0.3s ease-in-out;
+    transition: max-height 0.3s ease-in-out;
+    padding: 0;
+    margin: 0;
+    background: white;
+    border-top: none;
 }
 
 .category-dropdown.active .category-list {
     max-height: 500px;
-    padding-bottom: 10px;
+    border-top: 1px solid #e5e7eb;
 }
 
 .category-list li {
-    padding: 12px 25px;
+    padding: 14px 24px;
     cursor: pointer;
-    transition: 0.2s;
+    transition: all 0.2s;
+    color: var(--text-gray);
+    text-align: left;
+    font-size: 0.95rem;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.category-list li:last-child {
+    border-bottom: none;
+}
+
+.category-list li:hover {
+    background: var(--sidebar-bg);
+    color: var(--primary-orange);
+    padding-left: 28px;
 }
 
 .category-list li.active {
     background: var(--sidebar-bg);
     border-left: 4px solid var(--primary-orange);
     font-weight: bold;
+    color: var(--primary-orange);
 }
 
-/* Food Grid */
-.menu-content {
-    margin-top: 40px;
+/* Menu Container */
+.menu-container {
+    width: 100%;
+}
+
+/* Section Header */
+.section-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .section-label {
-    margin-bottom: 20px;
     font-size: 1.8rem;
+    color: var(--dark-brown);
+    font-weight: 700;
 }
 
+.section-badge {
+    background: linear-gradient(135deg, #ff7d29, #ff9436);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* Food Grid */
 .food-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 25px;
 }
 
+/* Food Card */
 .food-card {
     background: white;
     border-radius: 15px;
@@ -339,8 +415,6 @@ body {
 }
 
 .scroll-top {
-    bottom: 30px;
-    right: 30px;
     background: var(--primary-orange);
     color: white;
     width: 50px;
@@ -349,7 +423,6 @@ body {
     border: none;
     display: flex;
     cursor: pointer;
-    z-index: 999;
     align-items: center;
     justify-content: center;
 }
@@ -362,6 +435,10 @@ body {
 @media (max-width: 992px) {
     .food-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .category-dropdown {
+        max-width: 350px;
     }
 }
 
@@ -421,5 +498,14 @@ body {
 
     .menu-hero-content h1 {
         font-size: 2.5rem;
+    }
+    
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .category-dropdown {
+        max-width: 100%;
     }
 }

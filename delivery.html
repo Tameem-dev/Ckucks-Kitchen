@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Delivery Details | Chaks Kitchen</title>
+    <title>Delivery Details | Chuks Kitchen</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=League+Script&display=swap" />
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="css/delivery.css" />
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">Chaks Kitchen</div>
+            <div class="logo">Chuks Kitchen</div>
 
             <input type="checkbox" id="menu-toggle" />
             <label for="menu-toggle" class="hamburger">
@@ -36,151 +35,192 @@
         </div>
     </nav>
 
-    <!-- Main Content -->
     <main class="container">
-        <!-- Back Link -->
         <div class="back-link">
             <a href="checkout.html">
                 <i class="ph ph-arrow-left"></i> Back to Order Summary
             </a>
         </div>
 
-        <h1 class="page-title">Delivery Details</h1>
+        <!-- PAGE TITLE — changes based on delivery/pickup -->
+        <h1 class="page-title" id="pageTitle">Delivery Details</h1>
 
-        <!-- Delivery Details Card -->
         <div class="delivery-card">
-            <!-- Delivery Address Section -->
-            <div class="address-section">
-                <h2 class="section-title">
-                    <i class="ph ph-map-pin"></i> Delivery Address
-                </h2>
-                
-                <div class="address-card">
-                    <div class="address-details">
-                        <p class="address-line">
-                            <strong>Home:</strong> 123 Main Street, Victoria Island, Lagos
-                        </p>
-                        <p class="address-line">Apt 4B, Opposite Mega Plaza</p>
-                    </div>
-                    <button class="change-address-btn" id="changeAddressBtn">
-                        Change Address
-                    </button>
-                </div>
-            </div>
 
-            <!-- Delivery Time Section -->
-            <div class="delivery-time-section">
-                <h2 class="section-title">
-                    <i class="ph ph-clock"></i> Delivery Time
-                </h2>
-                
-                <div class="time-options">
-                    <div class="time-option active" id="asapOption">
-                        <span class="option-name">ASAP</span>
-                        <span class="option-estimate">30-45 min</span>
-                    </div>
-                    <div class="time-option" id="scheduleOption">
-                        <span class="option-name">Schedule for later</span>
-                        <span class="option-estimate">Choose time</span>
+            <!-- ==============================
+                 DELIVERY MODE — Address Section
+                 ============================== -->
+            <div id="deliveryMode">
+
+                <div class="address-section">
+                    <h2 class="section-title">
+                        <i class="ph ph-map-pin"></i> Your Delivery Address
+                    </h2>
+                    <div class="address-card">
+                        <div class="address-details">
+                            <p class="address-line" id="addressLine1">
+                                <strong>Home:</strong> 123 Main Street, Victoria Island, Lagos
+                            </p>
+                            <p class="address-line" id="addressLine2">Apt 4B, Opposite Mega Plaza</p>
+                        </div>
+                        <button class="change-address-btn" id="changeAddressBtn">
+                            Change Address
+                        </button>
                     </div>
                 </div>
 
-                <!-- Scheduled Time Picker (hidden by default) -->
-                <div class="scheduled-time-picker" id="scheduledTimePicker" style="display: none;">
-                    <div class="time-picker-row">
-                        <label for="deliveryDate">Date</label>
-                        <input type="date" id="deliveryDate" min="" />
+                <div class="delivery-time-section">
+                    <h2 class="section-title">
+                        <i class="ph ph-clock"></i> Delivery Time
+                    </h2>
+                    <div class="time-options">
+                        <div class="time-option active" id="asapOption">
+                            <span class="option-name">ASAP</span>
+                            <span class="option-estimate">30-45 min</span>
+                        </div>
+                        <div class="time-option" id="scheduleOption">
+                            <span class="option-name">Schedule for later</span>
+                            <span class="option-estimate">Choose time</span>
+                        </div>
                     </div>
-                    <div class="time-picker-row">
-                        <label for="deliveryTime">Time</label>
-                        <input type="time" id="deliveryTime" min="09:00" max="22:00" />
+                    <div class="scheduled-time-picker" id="scheduledTimePicker" style="display: none;">
+                        <div class="time-picker-row">
+                            <label for="deliveryDate">Date</label>
+                            <input type="date" id="deliveryDate" min="" />
+                        </div>
+                        <div class="time-picker-row">
+                            <label for="deliveryTime">Time</label>
+                            <input type="time" id="deliveryTime" min="09:00" max="22:00" />
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Delivery Instructions Section -->
-            <div class="instructions-section">
-                <h2 class="section-title">
-                    <i class="ph ph-note-pencil"></i> Delivery Instructions (Optional)
-                </h2>
-                
-                <textarea 
-                    id="deliveryInstructions" 
-                    placeholder="E.g leave at the front of the door, knock twice......"
-                    rows="3"
-                ></textarea>
-                <div class="character-count" id="instructionCount">0/200</div>
-            </div>
-
-            <!-- Contact Address Section -->
-            <div class="contact-section">
-                <h2 class="section-title">
-                    <i class="ph ph-phone"></i> Contact Address
-                </h2>
-                
-                <div class="contact-card">
-                    <div class="contact-details">
-                        <p class="contact-phone">
-                            <i class="ph ph-phone"></i> +234 801 234 5678
-                        </p>
-                    </div>
-                    <button class="change-contact-btn" id="changeContactBtn">
-                        Change
-                    </button>
+                <div class="instructions-section">
+                    <h2 class="section-title">
+                        <i class="ph ph-note-pencil"></i> Delivery Instructions (Optional)
+                    </h2>
+                    <textarea id="deliveryInstructions" placeholder="E.g. leave at the front door, knock twice..." rows="3"></textarea>
+                    <div class="character-count" id="instructionCount">0/200</div>
                 </div>
+
+                <div class="contact-section">
+                    <h2 class="section-title">
+                        <i class="ph ph-phone"></i> Contact Number
+                    </h2>
+                    <div class="contact-card">
+                        <div class="contact-details">
+                            <p class="contact-phone">
+                                <i class="ph ph-phone"></i> +234 801 234 5678
+                            </p>
+                        </div>
+                        <button class="change-contact-btn" id="changeContactBtn">Change</button>
+                    </div>
+                </div>
+
             </div>
 
-            <!-- Action Buttons -->
+            <!-- ==============================
+                 PICKUP MODE — Restaurant Info
+                 ============================== -->
+            <div id="pickupMode" style="display: none;">
+
+                <div class="pickup-banner">
+                    <i class="ph ph-storefront"></i>
+                    <div>
+                        <h3>You're picking up from us!</h3>
+                        <p>Come collect your order at our restaurant when it's ready.</p>
+                    </div>
+                </div>
+
+                <div class="address-section">
+                    <h2 class="section-title">
+                        <i class="ph ph-map-pin"></i> Restaurant Address
+                    </h2>
+                    <div class="address-card restaurant-address-card">
+                        <div class="address-details">
+                            <p class="address-line"><strong>Chuks Kitchen</strong></p>
+                            <p class="address-line">123 Taste Blvd, Victoria Island, Lagos, Nigeria</p>
+                            <p class="address-line">Open: Mon – Sun, 9:00 AM – 10:00 PM</p>
+                        </div>
+                        <a class="directions-btn" href="https://maps.google.com/?q=123+Taste+Blvd+Victoria+Island+Lagos" target="_blank">
+                            <i class="ph ph-navigation-arrow"></i> Get Directions
+                        </a>
+                    </div>
+                </div>
+
+                <div class="pickup-time-section">
+                    <h2 class="section-title">
+                        <i class="ph ph-clock"></i> Estimated Pickup Time
+                    </h2>
+                    <div class="pickup-eta">
+                        <i class="ph ph-timer"></i>
+                        <span>Your order will be ready in approximately <strong>20–30 minutes</strong> after confirmation.</span>
+                    </div>
+                </div>
+
+                <div class="contact-section">
+                    <h2 class="section-title">
+                        <i class="ph ph-phone"></i> Contact Number
+                    </h2>
+                    <div class="contact-card">
+                        <div class="contact-details">
+                            <p class="contact-phone">
+                                <i class="ph ph-phone"></i> +234 801 234 5678
+                            </p>
+                        </div>
+                        <button class="change-contact-btn" id="changeContactBtnPickup">Change</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Action Button -->
             <div class="action-buttons">
                 <button class="save-btn" id="saveBtn">
-                    <i class="ph ph-check"></i> Save & Continue
+                    <i class="ph ph-check"></i> Confirm & Continue
                 </button>
             </div>
+
         </div>
     </main>
 
-    <!-- Footer -->
-     <footer class="footer">
-      <div class="footer-grid">
-        <div class="footer-col">
-          <h2 class="logo-fonts light-orange">Chuks Kitchen</h2>
-          <p class="footer-note">
-            Bringing the authentic flavors of Nigerian home cooking to your
-            table.
-          </p>
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h2 class="logo-fonts light-orange">Chuks Kitchen</h2>
+                <p class="footer-note">Bringing the authentic flavors of Nigerian home cooking to your table.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="homepage.html">Home</a></li>
+                    <li><a href="menu.html">Explore</a></li>
+                    <li><a href="cart.html">My Order</a></li>
+                    <li><a href="payment.html">Account</a></li>
+                </ul>
+            </div>
+            <div class="footer-col-contact">
+                <h3>Contact Us</h3>
+                <p>+234 801 234 5678</p>
+                <p>hello@chukskitchen.com</p>
+                <p>123 Taste Blvd, Lagos, Nigeria</p>
+            </div>
+            <div class="footer-col">
+                <h3>Social Media</h3>
+                <ul class="social-links">
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Linkedin</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="footer-col">
-          <h3>Quick Links</h3>
-          <ul>
-            <li><a href="hompage.html">Home</a></li>
-            <li><a href="menu.html">Explore</a></li>
-            <li><a href="cart.html">My Order</a></li>
-            <li><a href="payment.html">Account</a></li>
-          </ul>
+        <div class="footer-bottom">
+            <p>© 2020 Lift Media. All rights reserved.</p>
+            <button id="scrollTop" class="scroll-top">
+                <i class="ph ph-arrow-up"></i>
+            </button>
         </div>
-        <div class="footer-col-contact">
-          <h3>Contact Us</h3>
-          <p>+234 801 234 5678</p>
-          <p>hello@chukskitchen.com</p>
-          <p>123 Taste Blvd, Lagos, Nigeria</p>
-        </div>
-        <div class="footer-col">
-          <h3>Social Media</h3>
-          <ul class="social-links">
-            <li><a href="#">Facebook</a></li>
-            <li><a href="#">Twitter</a></li>
-            <li><a href="#">Linkedin</a></li>
-            <li><a href="#">Instagram</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p>© 2020 Lift Media. All rights reserved.</p>
-        <button id="scrollTop" class="scroll-top">
-          <i class="ph ph-arrow-up"></i>
-        </button>
-      </div>
     </footer>
 
     <script src="js/delivery.js"></script>

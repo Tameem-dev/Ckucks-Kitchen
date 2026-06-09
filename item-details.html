@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jollof Rice with Fried Chicken | Chuk's Kitchen</title>
+    <title>Item Details | Chuks Kitchen</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -20,7 +20,7 @@
             </label>
 
             <ul class="nav-links">
-                <li><a href="hompage.html">Home</a></li>
+                <li><a href="homepage.html">Home</a></li>
                 <li><a href="menu.html" class="active">Explore</a></li>
                 <li><a href="cart.html">My Orders</a></li>
                 <li><a href="payment.html">Account</a></li>
@@ -44,33 +44,43 @@
 
         <div class="item-card">
             <div class="item-image">
-                <img src="image/jollof.png" alt="Jollof Rice with Fried Chicken">
+                <img src="" alt="">
             </div>
 
             <div class="item-details">
-                <h1 class="item-title">Jollof Rice with Fried Chicken</h1>
-                <div class="item-price">₦2,800</div>
+                <h1 class="item-title"></h1>
+                <div class="item-price"></div>
                 
-                <p class="item-description">
-                    Our signature Jollof rice, cooked to perfection with aromatic spices, 
-                    served with juicy, golden-fried chicken.
-                </p>
+                <p class="item-description"></p>
 
                 <div class="item-tags">
                     <span class="tag"><i class="ph ph-flame"></i> Mildly spicy</span>
                     <span class="tag"><i class="ph ph-leaf"></i> Vegetarian option available</span>
                 </div>
 
-                <a href="#" class="allergies-link"><i class="ph ph-info"></i> View Allergies</a>
+                <!-- Allergen Panel -->
+                <div class="allergen-wrapper">
+                    <button class="allergies-link" id="allergenToggle" aria-expanded="false">
+                        <i class="ph ph-info"></i> View Allergens
+                        <i class="ph ph-caret-down allergen-caret"></i>
+                    </button>
+                    <div class="allergen-panel" id="allergenPanel">
+                        <p class="allergen-intro">This dish may contain the following allergens. Please inform us of any dietary requirements when ordering.</p>
+                        <div class="allergen-tags" id="allergenTags">
+                            <!-- Populated by JS based on item category -->
+                        </div>
+                        <p class="allergen-note"><i class="ph ph-warning"></i> Prepared in a kitchen that handles nuts, gluten, and shellfish.</p>
+                    </div>
+                </div>
 
-                <!-- Choose Your Protein Section -->
-                <div class="options-section">
+                <!-- Choose Your Protein Section — hidden by default, shown via JS for eligible items -->
+                <div class="options-section" id="proteinSection" style="display:none;">
                     <h3 class="section-title"><i class="ph ph-fork-knife"></i> Choose Your Protein</h3>
                     
                     <div class="option-item">
                         <div class="option-left">
-                            <input type="radio" name="protein" id="chicken" checked>
-                            <label for="chicken">Fried Chicken <span class="default-badge">Default</span></label>
+                            <input type="radio" name="protein" id="chicken">
+                            <label for="chicken">Fried Chicken</label>
                         </div>
                         <span class="option-price">+₦500</span>
                     </div>
@@ -92,8 +102,8 @@
                     </div>
                 </div>
 
-                <!-- Extra Sides Section -->
-                <div class="options-section">
+                <!-- Extra Sides Section — hidden by default, shown via JS for eligible items -->
+                <div class="options-section" id="sidesSection" style="display:none;">
                     <h3 class="section-title"><i class="ph ph-cooking-pot"></i> Extra Sides (Optional)</h3>
                     
                     <div class="option-item">
@@ -124,14 +134,14 @@
                 <!-- Special Instructions -->
                 <div class="special-instructions">
                     <label for="instructions" class="section-title"><i class="ph ph-note-pencil"></i> Special Instructions</label>
-                    <textarea id="instructions" placeholder="E.g. no onion, food is too spicy, food is too hot"></textarea>
-                    <div class="example-text">Example: no onion, food is too spicy, food is too hot</div>
+                    <textarea id="instructions" placeholder="E.g. no onion, less spicy, extra sauce..."></textarea>
+                    <div class="example-text">Example: no onion, less spicy, extra sauce on the side</div>
                 </div>
 
                 <!-- Action Buttons -->
                 <div class="action-buttons">
                     <button class="btn-add-to-cart" id="addToCartBtn">
-                        <i class="ph ph-shopping-cart"></i> Add to Cart - ₦2,800
+                        <i class="ph ph-shopping-cart"></i> Add to Cart
                     </button>
                 </div>
             </div>
@@ -150,7 +160,7 @@
                     <li><a href="homepage.html">Home</a></li>
                     <li><a href="menu.html">Explore</a></li>
                     <li><a href="cart.html">My Order</a></li>
-                    <li><a href="account.html">Account</a></li>
+                    <li><a href="payment.html">Account</a></li>
                 </ul>
             </div>
             <div class="footer-col-contact">

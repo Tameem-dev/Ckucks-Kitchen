@@ -21,25 +21,36 @@ body {
     background-color: var(--white);
     color: var(--text-dark);
     line-height: 1.5;
+    overflow-x: hidden; /* ADDED: prevents horizontal scroll on all devices */
+    width: 100%;
 }
 
-/* HERO SECTION */
+/* HERO SECTION - Updated to remove gaps */
 .hero {
     display: flex;
     min-height: 100vh;
+    align-items: stretch;
+    margin-bottom: 0;
+    width: 100%; /* ADDED: ensures full width */
 }
 
 .hero-image {
     flex: 1;
-    height: 100vh;
-    position: sticky;
-    top: 0;
+    position: relative;
+    overflow: hidden;
+    min-height: 300px; /* ADDED: prevents collapse on very small screens */
 }
 
 .hero-image img {
-    width: 110%;
-    height: 838px;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
 .hero-content {
@@ -56,12 +67,14 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 2rem;
+    flex-wrap: wrap; /* ADDED: allows wrapping on tiny screens */
+    gap: 1rem; /* ADDED: spacing when wrapped */
 }
 
 .logo-text {
     font-family: 'League Script', cursive;
     color: var(--primary-orange);
-    font-size: 2.2rem;
+    font-size: clamp(1.8rem, 6vw, 2.2rem); /* IMPROVED: scales smoothly */
     font-weight: bold;
 }
 
@@ -73,6 +86,8 @@ body {
     border-radius: 8px;
     font-weight: 600;
     transition: var(--transition);
+    display: inline-block; /* ADDED: ensures proper sizing */
+    white-space: nowrap; /* ADDED: prevents text wrapping on button */
 }
 
 .btn-signin:hover {
@@ -88,11 +103,12 @@ body {
     flex-direction: column;
     justify-content: center;
     max-width: 520px;
+    width: 100%; /* ADDED: ensures full width on mobile */
 }
 
 .hero-body h1 {
-    font-size: clamp(2.5rem, 5vw, 3.5rem);
-    line-height: 1.1;
+    font-size: clamp(2rem, 5vw, 3.5rem); /* IMPROVED: better scaling on mobile */
+    line-height: 1.2; /* IMPROVED: better line height for small screens */
     margin-bottom: 1.5rem;
     font-weight: 800;
     letter-spacing: -0.02em;
@@ -100,7 +116,7 @@ body {
 
 .hero-body p {
     color: var(--text-gray);
-    font-size: 1.1rem;
+    font-size: clamp(0.95rem, 3vw, 1.1rem); /* IMPROVED: scales on mobile */
     margin-bottom: 2.5rem;
 }
 
@@ -115,6 +131,7 @@ body {
     gap: 1rem;
     margin-bottom: 1rem;
     font-weight: 500;
+    flex-wrap: wrap; /* ADDED: wraps on tiny screens */
 }
 
 .icon-circle {
@@ -127,6 +144,7 @@ body {
     align-items: center;
     justify-content: center;
     font-size: 1.2rem;
+    flex-shrink: 0; /* ADDED: prevents icon from shrinking */
 }
 
 /* BUTTONS */
@@ -134,15 +152,18 @@ body {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    width: 100%; /* ADDED: ensures full width */
 }
 
 .btn-orange, .btn-outline-blue {
-    padding: 1.1rem;
+    padding: 1rem 1rem; /* IMPROVED: slightly adjusted for better touch targets */
     border-radius: 12px;
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
     transition: var(--transition);
+    text-align: center; /* ADDED: ensures text centered */
+    width: 100%; /* ADDED: full width buttons on all screens */
 }
 
 .btn-orange {
@@ -176,6 +197,8 @@ body {
     padding-top: 2rem;
     border-top: 1px solid #f3f4f6;
     margin-top: 2rem;
+    flex-wrap: wrap; /* ADDED: wraps on mobile */
+    gap: 1rem; /* ADDED: spacing when wrapped */
 }
 
 .legal-links a {
@@ -184,12 +207,17 @@ body {
     margin-left: 1rem;
 }
 
-/* MAIN FOOTER */
+.legal-links a:first-child {
+    margin-left: 0; /* ADDED: fixes first child spacing */
+}
+
+/* MAIN FOOTER - Removed margin-top */
 .footer {
-   background: var(--footer-bg);
+    background: var(--footer-bg);
     color: #d1d5db;
     padding: 60px 5% 30px;
-    margin-top: 60px;
+    margin-top: 0;
+    width: 100%; /* ADDED: ensures full width */
 }
 
 .footer-grid {
@@ -200,9 +228,9 @@ body {
 }
 
 .footer-note {
-    line-height: 36px;
+    line-height: 1.5; /* IMPROVED: was 36px (too rigid), now fluid */
     font-weight: 400;
-    font-size: 24px;
+    font-size: clamp(0.9rem, 3vw, 1rem); /* IMPROVED: scales properly */
     margin: 0;
 }
 
@@ -218,7 +246,7 @@ body {
 
 .footer-column li {
     margin-bottom: 0.8rem;
-    font-size: 0.95rem;
+    font-size: clamp(0.85rem, 2.5vw, 0.95rem); /* IMPROVED: scales on mobile */
 }
 
 .footer-column a {
@@ -236,6 +264,7 @@ body {
     color: #f9b17a;
     margin-bottom: 1rem;
     display: block;
+    font-size: clamp(1.8rem, 6vw, 2.2rem); /* ADDED: scales logo in footer */
 }
 
 .footer-bottom {
@@ -244,6 +273,8 @@ body {
     align-items: center;
     padding-top: 2rem;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+    flex-wrap: wrap; /* ADDED: wraps on mobile */
+    gap: 1rem; /* ADDED: spacing when wrapped */
 }
 
 .back-to-top {
@@ -259,6 +290,7 @@ body {
     justify-content: center;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     transition: var(--transition);
+    flex-shrink: 0; /* ADDED: prevents shrinking */
 }
 
 .back-to-top:hover {
@@ -266,43 +298,183 @@ body {
     background: #ff7d29cc;
 }
 
-/* RESPONSIVE */
+/* ============================================ */
+/* RESPONSIVE ENHANCEMENTS (YOUR ORIGINAL + EXTRA FIXES) */
+/* ============================================ */
+
 @media (max-width: 1100px) {
     .hero {
         flex-direction: column;
+        min-height: auto;
     }
 
     .hero-image {
         height: 450px;
         position: relative;
+        min-height: auto;
+    }
+    
+    .hero-image img {
+        position: relative;
+        height: 450px;
+        object-fit: cover;
     }
 
     .hero-content {
-        padding: 4rem 5%;
+        padding: 3rem 6%; /* IMPROVED: better padding on tablet */
+        min-height: auto;
     }
 
     .hero-body {
         max-width: 100%;
         margin: 2rem 0;
     }
+    
+    .footer {
+        margin-top: 0;
+    }
+    
+    /* ADDED: fixes footer grid on tablet */
+    .footer-grid {
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    /* ADDED: medium screen improvements */
+    .hero-content {
+        padding: 2.5rem 5%;
+    }
+    
+    .hero-image {
+        height: 380px;
+    }
+    
+    .hero-image img {
+        height: 380px;
+    }
+    
+    .footer {
+        padding: 40px 5% 25px;
+    }
+    
+    .footer-grid {
+        gap: 2rem;
+        padding-bottom: 2.5rem;
+    }
 }
 
 @media (max-width: 600px) {
     .nav-header {
         flex-direction: column;
-        gap: 1.5rem;
+        gap: 1.2rem;
         text-align: center;
+    }
+    
+    .hero-content {
+        padding: 2rem 5%;
+    }
+    
+    .hero-body {
+        margin: 1.5rem 0;
+    }
+    
+    .feature-list {
+        margin-bottom: 2rem;
+    }
+    
+    .button-stack {
+        gap: 0.8rem;
+    }
+    
+    .btn-orange, .btn-outline-blue {
+        padding: 0.9rem 1rem;
     }
 
     .footer-bottom {
-        flex-direction: column;
-        gap: 1.5rem;
+        flex-direction: column-reverse; /* IMPROVED: back to top appears above copyright on mobile */
+        gap: 1.2rem;
         text-align: center;
     }
 
     .hero-footer-links {
         flex-direction: column;
-        gap: 1rem;
+        gap: 0.8rem;
         align-items: center;
+        text-align: center;
     }
+    
+    .legal-links {
+        display: flex;
+        gap: 1.2rem;
+        justify-content: center;
+    }
+    
+    .legal-links a {
+        margin-left: 0;
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr; /* ADDED: single column on small phones */
+        gap: 1.8rem;
+        text-align: center;
+    }
+    
+    .footer-column {
+        text-align: center;
+    }
+    
+    .logo-text.white {
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    /* ADDED: extra small devices (iPhone SE, etc.) */
+    .hero-image {
+        height: 280px;
+    }
+    
+    .hero-image img {
+        height: 280px;
+    }
+    
+    .hero-content {
+        padding: 1.5rem 1.2rem;
+    }
+    
+    .icon-circle {
+        width: 38px;
+        height: 38px;
+        font-size: 1rem;
+    }
+    
+    .feature-item {
+        gap: 0.8rem;
+    }
+    
+    .back-to-top {
+        width: 42px;
+        height: 42px;
+    }
+    
+    .footer-note {
+        font-size: 0.85rem;
+    }
+}
+
+/* ADDED: ensures images never overflow */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ADDED: improves touch targets for mobile */
+button, 
+.btn-signin, 
+.btn-orange, 
+.btn-outline-blue,
+.back-to-top {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
 }

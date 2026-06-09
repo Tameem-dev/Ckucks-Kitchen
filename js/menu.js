@@ -2,11 +2,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Navigate to item details page with item data
     function navigateToItemDetails(card) {
-        // Get the image source from the img tag inside the card
         const imgElement = card.querySelector('img');
         const imageSrc = imgElement ? imgElement.src : '';
         
-        // Get all item data from data attributes
         const itemData = {
             id: card.dataset.itemId,
             name: card.dataset.itemName,
@@ -16,10 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
             category: card.dataset.itemCategory || 'Popular'
         };
         
-        // Store item data in sessionStorage for the details page
         sessionStorage.setItem('selectedItem', JSON.stringify(itemData));
-        
-        // Navigate to item details page
         window.location.href = 'item-details.html';
     }
     
@@ -32,7 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Food card click handler
     const foodCards = document.querySelectorAll('.food-card');
-    
     foodCards.forEach(card => {
         card.addEventListener('click', function(e) {
             if (e.target.closest('.btn-add')) {
@@ -41,130 +35,147 @@ document.addEventListener('DOMContentLoaded', () => {
             navigateToItemDetails(this);
         });
     });
-    
+
     // ===================================
     // SIDEBAR DROPDOWN FUNCTIONALITY
     // ===================================
     const dropdownTrigger = document.getElementById('dropdownTrigger');
     const categoryBox = document.getElementById('categoryBox');
     const categoryItems = document.querySelectorAll('.category-list li');
+    const dropdownHeaderSpan = dropdownTrigger.querySelector('span');
 
+    // Toggle dropdown on click
     if (dropdownTrigger) {
-        dropdownTrigger.addEventListener('click', () => {
+        dropdownTrigger.addEventListener('click', (e) => {
+            e.stopPropagation();
             categoryBox.classList.toggle('active');
         });
     }
 
-    // Get all section elements
-    const popularSection = document.getElementById('popular-section');
-    const jollofSection = document.getElementById('jollof-section');
-    const swallowSection = document.getElementById('swallow-section');
-    const grillsSection = document.getElementById('grills-section');
-    const beveragesSection = document.getElementById('beverages-section');
-    const dessertsSection = document.getElementById('desserts-section');
-
-    // Hide all sections function
-    function hideAllSections() {
-        popularSection.style.display = 'none';
-        jollofSection.style.display = 'none';
-        swallowSection.style.display = 'none';
-        grillsSection.style.display = 'none';
-        beveragesSection.style.display = 'none';
-        dessertsSection.style.display = 'none';
-    }
-
-    // Show only the selected section
-    function showSection(category) {
-        hideAllSections();
-        
-        switch(category) {
-            case 'Popular':
-                popularSection.style.display = 'block';
-                break;
-            case 'Jollof Rice & Entrees':
-                jollofSection.style.display = 'block';
-                break;
-            case 'Swallow & Soups':
-                swallowSection.style.display = 'block';
-                break;
-            case 'Grills & Sides':
-                grillsSection.style.display = 'block';
-                break;
-            case 'Beverages':
-                beveragesSection.style.display = 'block';
-                break;
-            case 'Desserts':
-                dessertsSection.style.display = 'block';
-                break;
-            default:
-                // If category doesn't match, show all default sections
-                popularSection.style.display = 'block';
-                jollofSection.style.display = 'block';
-                swallowSection.style.display = 'block';
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!categoryBox.contains(e.target)) {
+            categoryBox.classList.remove('active');
         }
-    }
+    });
+
+    // Category filter function - SHOWS/HIDES SECTIONS
+    // Category filter function - SHOWS/HIDES SECTIONS
+function filterByCategory(category, categoryName) {
+    const allSections = document.querySelectorAll('.menu-section');
+    let visibleCount = 0;
+    
+    allSections.forEach(section => {
+        const sectionCategory = section.dataset.sectionCategory;
+        
+        if (category === 'popular') {
+            // Show ONLY the Popular section
+            if (sectionCategory === 'popular') {
+                section.style.display = 'block';
+                const cards = section.querySelectorAll('.food-card');
+                visibleCount += cards.length;
+            } else {
+                section.style.display = 'none';
+            }
+        } else if (sectionCategory === category) {
+            // Show only matching section
+            section.style.display = 'block';
+            const cards = section.querySelectorAll('.food-card');
+            visibleCount += cards.length;
+        } else {
+            // Hide non-matching sections
+            section.style.display = 'none';
+        }
+    });
+    
+    // Show SweetAlert notification
+    Swal.fire({
+        icon: 'success',
+        title: `${categoryName || 'Category'} Selected`,
+        text: `Showing ${visibleCount} item(s)`,
+        confirmButtonColor: '#ff7d29',
+        timer: 1500,
+        showConfirmButton: false,
+        toast: true,
+        position: 'top-end'
+    });
+}
 
     // Handle category selection
     categoryItems.forEach(item => {
-        item.addEventListener('click', () => {
+        item.addEventListener('click', (e) => {
+            e.stopPropagation();
+            
             // Update active class
             categoryItems.forEach(li => li.classList.remove('active'));
             item.classList.add('active');
             
-            // Update dropdown header text
-            dropdownTrigger.querySelector('span').textContent = item.textContent;
+            // Get the selected category name and value
+            const selectedCategoryName = item.textContent;
+            const categoryValue = item.dataset.category;
             
-            // Close dropdown
+            // Update dropdown header text to show selected category
+            dropdownHeaderSpan.textContent = selectedCategoryName;
+            
+            // Close dropdown after selection
             categoryBox.classList.remove('active');
             
-            // Show the selected category section
-            showSection(item.textContent);
+            // Filter the food sections
+            filterByCategory(categoryValue, selectedCategoryName);
         });
     });
-
-    // ===================================
-    // HANDLE CATEGORY FROM HOMEPAGE
-    // ===================================
-    const targetCategory = sessionStorage.getItem('targetCategory');
-    if (targetCategory) {
-        // Find and click the matching category
-        categoryItems.forEach(item => {
-            if (item.textContent === targetCategory) {
-                // Trigger the click on the category
-                setTimeout(() => {
-                    item.click();
-                }, 100);
-            }
-        });
-        // Clear the stored category
-        sessionStorage.removeItem('targetCategory');
-    }
 
     // ===================================
     // HANDLE SEARCH FROM HOMEPAGE
     // ===================================
     const searchTerm = sessionStorage.getItem('searchTerm');
     if (searchTerm) {
-        // You can implement search filtering here
         console.log('Searching for:', searchTerm);
         
-        // Optional: Show search results notification
+        // Show all sections first
+        const allSections = document.querySelectorAll('.menu-section');
+        allSections.forEach(section => {
+            section.style.display = 'block';
+        });
+        
+        const foodCards = document.querySelectorAll('.food-card');
+        let foundItems = 0;
+        
+        foodCards.forEach(card => {
+            const itemName = card.dataset.itemName?.toLowerCase() || '';
+            const itemDesc = card.dataset.itemDescription?.toLowerCase() || '';
+            const searchLower = searchTerm.toLowerCase();
+            
+            if (itemName.includes(searchLower) || itemDesc.includes(searchLower)) {
+                card.style.display = 'block';
+                foundItems++;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+        
+        // Hide empty sections
+        allSections.forEach(section => {
+            const visibleCards = section.querySelectorAll('.food-card[style*="display: block"]');
+            const allCards = section.querySelectorAll('.food-card');
+            
+            // If no visible cards found in this section, hide it
+            if (visibleCards.length === 0 && allCards.length > 0) {
+                section.style.display = 'none';
+            }
+        });
+        
         Swal.fire({
-            icon: 'info',
+            icon: foundItems > 0 ? 'info' : 'warning',
             title: 'Search Results',
-            text: `Showing results for "${searchTerm}"`,
+            text: foundItems > 0 ? `Found ${foundItems} item(s) matching "${searchTerm}"` : `No items found matching "${searchTerm}"`,
             confirmButtonColor: '#ff7d29',
             timer: 2000,
             showConfirmButton: false
         });
         
-        // Clear the stored search term
         sessionStorage.removeItem('searchTerm');
     }
-
-    // Initialize with Popular selected and default sections visible
-    // By default, Popular, Jollof, and Swallow sections are visible
-    // Others are hidden
     
     // ===================================
     // SCROLL TO TOP BUTTON
@@ -225,16 +236,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const cart = getCart();
         const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
         
-        // Add cart badge to My Orders link
         const myOrdersLink = document.querySelector('a[href="cart.html"]');
         if (myOrdersLink) {
-            // Remove existing badge
             const existingBadge = myOrdersLink.querySelector('.cart-badge');
             if (existingBadge) {
                 existingBadge.remove();
             }
             
-            // Add new badge if there are items
             if (totalItems > 0) {
                 const badge = document.createElement('span');
                 badge.className = 'cart-badge';
@@ -252,6 +260,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
-    // Update cart count on page load
     updateCartCount();
 });

@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Get the selected item from sessionStorage
     const selectedItem = JSON.parse(sessionStorage.getItem('selectedItem'));
     
     if (!selectedItem) {
@@ -17,8 +16,117 @@ document.addEventListener('DOMContentLoaded', function() {
         itemImage.src = selectedItem.image;
         itemImage.alt = selectedItem.name;
     }
-    
-    // Price calculation
+
+    // ===================================
+    // SMART SECTION VISIBILITY
+    // ===================================
+    const proteinCategories = ['entrees', 'swallow'];
+    const sidesCategories = ['entrees', 'grills'];
+    const itemCategory = (selectedItem.category || '').toLowerCase();
+
+    const proteinSection = document.getElementById('proteinSection');
+    const sidesSection = document.getElementById('sidesSection');
+
+    if (proteinCategories.includes(itemCategory)) {
+        proteinSection.style.display = 'block';
+    }
+    if (sidesCategories.includes(itemCategory)) {
+        sidesSection.style.display = 'block';
+    }
+
+    // ===================================
+    // PER-ITEM ALLERGEN DATA
+    // ===================================
+    const allergenMap = {
+        // ENTREES
+        'jollof-chicken':    ['Gluten', 'Soy', 'Eggs'],
+        'jollof-fish':       ['Fish', 'Gluten', 'Soy'],
+        'fried-rice':        ['Gluten', 'Soy', 'Eggs'],
+        'ofada-rice':        ['Gluten', 'Soy'],
+        'white-rice':        ['Gluten', 'Soy'],
+        'coconut-rice':      ['Gluten', 'Soy', 'Tree Nuts'],
+        'basmati-rice':      ['Gluten', 'Soy'],
+        'macaroni':          ['Gluten', 'Dairy', 'Eggs'],
+        'indomie':           ['Gluten', 'Soy', 'Eggs'],
+        'porridge':          ['Gluten', 'Soy'],
+        'yam-egg-sauce':     ['Eggs', 'Soy'],
+        'ewa-agoyin':        ['Gluten', 'Soy'],
+        'jollof-spagetti':   ['Gluten', 'Soy', 'Eggs'],
+
+        // SWALLOW & SOUPS
+        'eba-egusi':         ['Gluten', 'Tree Nuts', 'Fish'],
+        'eba-egusi-beef':    ['Gluten', 'Tree Nuts'],
+        'pounded-yam':       ['Shellfish', 'Fish', 'Gluten'],
+        'amala':             ['Gluten', 'Soy'],
+        'fufu':              ['Fish', 'Shellfish', 'Gluten'],
+        'eba-bitter-leaf':   ['Gluten', 'Fish'],
+        'eba-efo-riro':      ['Gluten', 'Fish', 'Shellfish'],
+        'ogbono-pounded-yam':['Tree Nuts', 'Fish', 'Gluten'],
+        'pounded-yam-afang': ['Shellfish', 'Fish', 'Gluten'],
+        'fufu-egusi':        ['Gluten', 'Tree Nuts', 'Fish'],
+        'fufu-oha':          ['Gluten', 'Fish'],
+
+        // GRILLS & SIDES
+        'grilled-chicken':   ['Gluten', 'Soy', 'Mustard'],
+        'suya':              ['Peanuts', 'Gluten', 'Soy'],
+        'spicy-tilapia':     ['Fish', 'Gluten'],
+        'shawarma':          ['Gluten', 'Dairy', 'Eggs', 'Mustard'],
+        'chicken':           ['Gluten', 'Soy'],
+        'eggs-plantain':     ['Eggs', 'Soy'],
+        'kilishi':           ['Peanuts', 'Gluten', 'Soy'],
+        'chicken-chips':     ['Gluten', 'Soy', 'Eggs'],
+
+        // BEVERAGES
+        'zobo':              ['None known'],
+        'kunu':              ['Gluten'],
+        'wine':              ['Sulphites'],
+        'coco-drink':        ['None known'],
+
+        // DESSERTS
+        'puff-puff':         ['Gluten', 'Dairy', 'Eggs'],
+        'milky-doughnut':    ['Gluten', 'Dairy', 'Eggs'],
+        'chin-chin':         ['Gluten', 'Dairy', 'Eggs', 'Nuts'],
+        'doughnut':          ['Gluten', 'Dairy', 'Eggs'],
+        'cup-cake':          ['Gluten', 'Dairy', 'Eggs', 'Nuts'],
+        'cake':              ['Gluten', 'Dairy', 'Eggs', 'Nuts'],
+    };
+
+    const allergenIcons = {
+        'Gluten':     'ph-bread',
+        'Dairy':      'ph-cow',
+        'Eggs':       'ph-egg',
+        'Soy':        'ph-plant',
+        'Shellfish':  'ph-shrimp',
+        'Fish':       'ph-fish',
+        'Nuts':       'ph-nut',
+        'Tree Nuts':  'ph-nut',
+        'Peanuts':    'ph-nut',
+        'Mustard':    'ph-pepper',
+        'Sulphites':  'ph-wine',
+        'None known': 'ph-check-circle'
+    };
+
+    const allergenToggle = document.getElementById('allergenToggle');
+    const allergenPanel  = document.getElementById('allergenPanel');
+    const allergenTags   = document.getElementById('allergenTags');
+
+    const itemId = selectedItem.id || '';
+    const itemAllergens = allergenMap[itemId] || ['Please ask staff for allergen information'];
+
+    allergenTags.innerHTML = itemAllergens.map(a => `
+        <span class="allergen-tag ${a === 'None known' ? 'allergen-safe' : ''}">
+            <i class="ph ${allergenIcons[a] || 'ph-warning'}"></i> ${a}
+        </span>
+    `).join('');
+
+    allergenToggle.addEventListener('click', function () {
+        const isOpen = allergenPanel.classList.toggle('open');
+        allergenToggle.setAttribute('aria-expanded', isOpen);
+    });
+
+    // ===================================
+    // PRICE CALCULATION
+    // ===================================
     const basePriceValue = parseInt(selectedItem.price);
     const addToCartBtn = document.getElementById('addToCartBtn');
     const proteinInputs = document.querySelectorAll('input[name="protein"]');
@@ -32,18 +140,13 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function calculateTotal() {
         let total = basePriceValue;
-        
         const selectedProtein = document.querySelector('input[name="protein"]:checked');
-        if (selectedProtein && selectedProtein.id !== 'chicken') {
-            total += proteinPrices[selectedProtein.id];
+        if (selectedProtein) {
+            total += proteinPrices[selectedProtein.id] || 0;
         }
-        
         sideInputs.forEach(input => {
-            if (input.checked) {
-                total += sidePrices[input.id];
-            }
+            if (input.checked) total += sidePrices[input.id] || 0;
         });
-        
         return total;
     }
     
@@ -57,7 +160,9 @@ document.addEventListener('DOMContentLoaded', function() {
     proteinInputs.forEach(input => input.addEventListener('change', updateButtonPrice));
     sideInputs.forEach(input => input.addEventListener('change', updateButtonPrice));
     
-    // Cart functions
+    // ===================================
+    // CART FUNCTIONS
+    // ===================================
     function getCart() {
         const cart = localStorage.getItem('chuksKitchenCart');
         return cart ? JSON.parse(cart) : [];
@@ -69,37 +174,25 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function getSelectedOptions() {
         const selectedProtein = document.querySelector('input[name="protein"]:checked');
-        let proteinText = 'Fried Chicken';
+        let proteinText = null;
         let proteinPrice = 0;
-        
-        if (selectedProtein && selectedProtein.id !== 'chicken') {
-            proteinText = proteinNames[selectedProtein.id];
-            proteinPrice = proteinPrices[selectedProtein.id];
+        if (selectedProtein) {
+            proteinText = proteinNames[selectedProtein.id] || null;
+            proteinPrice = proteinPrices[selectedProtein.id] || 0;
         }
-        
         const sides = [];
         let sidesPrices = 0;
-        
         sideInputs.forEach(input => {
             if (input.checked) {
                 sides.push(sideNames[input.id]);
-                sidesPrices += sidePrices[input.id];
+                sidesPrices += sidePrices[input.id] || 0;
             }
         });
-        
-        return {
-            protein: proteinText,
-            proteinPrice: proteinPrice,
-            sides: sides,
-            sidesPrices: sidesPrices,
-            instructions: instructionsTextarea.value.trim()
-        };
+        return { protein: proteinText, proteinPrice, sides, sidesPrices, instructions: instructionsTextarea.value.trim() };
     }
     
-    // Add to cart button click
     addToCartBtn.addEventListener('click', function() {
         const currentUser = localStorage.getItem('chuksKitchenCurrentUser');
-        
         if (!currentUser) {
             Swal.fire({
                 icon: 'warning',
@@ -126,7 +219,7 @@ document.addEventListener('DOMContentLoaded', function() {
             basePrice: basePriceValue,
             protein: options.protein,
             sides: options.sides,
-            totalPrice: totalPrice,
+            totalPrice,
             price: totalPrice,
             instructions: options.instructions,
             quantity: 1,
@@ -134,7 +227,6 @@ document.addEventListener('DOMContentLoaded', function() {
         };
         
         let cart = getCart();
-        
         const existingItemIndex = cart.findIndex(item => 
             item.name === cartItem.name && 
             item.protein === cartItem.protein && 
@@ -148,23 +240,20 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         saveCart(cart);
-        
-        // Go to cart page
         window.location.href = 'cart.html';
     });
     
-    // Set default protein
-    document.getElementById('chicken').checked = true;
     updateButtonPrice();
     
-    // Login button functionality
+    // ===================================
+    // LOGIN BUTTON
+    // ===================================
     const currentUser = JSON.parse(localStorage.getItem('chuksKitchenCurrentUser'));
     const loginBtns = [document.getElementById('loginBtn'), document.getElementById('loginBtnMobile')];
     
     loginBtns.forEach(btn => {
         if (btn) {
             btn.textContent = currentUser ? 'Logout' : 'Login';
-            
             btn.addEventListener('click', () => {
                 if (currentUser) {
                     Swal.fire({
@@ -189,33 +278,15 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ===================================
-// SCROLL TO TOP BUTTON FUNCTIONALITY
+// SCROLL TO TOP
 // ===================================
-
 const scrollTopBtn = document.getElementById('scrollTop');
-
 if (scrollTopBtn) {
-    // Show/hide button based on scroll position
     window.addEventListener('scroll', function() {
-        if (window.scrollY > 300) {
-            scrollTopBtn.style.display = 'flex';
-        } else {
-            scrollTopBtn.style.display = 'none';
-        }
+        scrollTopBtn.style.display = window.scrollY > 300 ? 'flex' : 'none';
     });
-
-    // Scroll to top when clicked
     scrollTopBtn.addEventListener('click', function() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-
-    // Check initial scroll position
-    if (window.scrollY > 300) {
-        scrollTopBtn.style.display = 'flex';
-    } else {
-        scrollTopBtn.style.display = 'none';
-    }
+    scrollTopBtn.style.display = window.scrollY > 300 ? 'flex' : 'none';
 }

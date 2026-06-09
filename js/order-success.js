@@ -178,13 +178,4 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // ===================================
-    // CLEAR OLD ORDER DATA (optional)
-    // ===================================
-    
-    // You can clear cart and order data after showing success
-    // This is commented out so data persists for receipt generation
-    // localStorage.removeItem('chuksKitchenCart');
-    // localStorage.removeItem('orderSummary');
-    // localStorage.removeItem('deliveryDetails');
 });

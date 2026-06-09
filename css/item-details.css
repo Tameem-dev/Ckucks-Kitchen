@@ -513,3 +513,102 @@ body {
         font-size: 0.9rem;
     }
 }
+
+
+/* ===================================
+   ALLERGEN PANEL — add to item-details.css
+   =================================== */
+
+.allergen-wrapper {
+    margin: 12px 0 20px;
+}
+
+.allergies-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 8px 14px;
+    color: #4b5563;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+    font-family: 'Inter', sans-serif;
+}
+
+.allergies-link:hover {
+    border-color: #ff7d29;
+    color: #ff7d29;
+}
+
+.allergen-caret {
+    margin-left: 4px;
+    transition: transform 0.3s ease;
+    font-size: 0.85rem;
+}
+
+.allergies-link[aria-expanded="true"] .allergen-caret {
+    transform: rotate(180deg);
+}
+
+.allergen-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.3s ease;
+    background: #fff8f3;
+    border: 1px solid #ffe4cc;
+    border-radius: 10px;
+    padding: 0 16px;
+    margin-top: 0;
+}
+
+.allergen-panel.open {
+    max-height: 300px;
+    padding: 16px;
+    margin-top: 10px;
+}
+
+.allergen-intro {
+    font-size: 0.85rem;
+    color: #6b7280;
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+.allergen-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.allergen-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: white;
+    border: 1px solid #ffd1a8;
+    color: #c2410c;
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 20px;
+}
+
+.allergen-tag i {
+    font-size: 0.9rem;
+}
+
+.allergen-note {
+    font-size: 0.78rem;
+    color: #9ca3af;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border-top: 1px solid #ffe4cc;
+    padding-top: 10px;
+    margin-top: 4px;
+}
